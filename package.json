@@ -1,0 +1,29 @@
+{
+  "name": "adam-messenger",
+  "version": "1.0.0",
+  "description": "adam legal bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ekipio/adam-messenger.git"
+  },
+  "keywords": [
+    "legal",
+    "bot",
+    "service"
+  ],
+  "author": "Ekipio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ekipio/adam-messenger/issues"
+  },
+  "homepage": "https://github.com/Ekipio/adam-messenger#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  }
+}
