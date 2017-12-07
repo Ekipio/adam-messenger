@@ -34,7 +34,7 @@ app.listen(app.get('port'), function() {
 	console.log('running on port', app.get('port'))
 })
 
-// API endpoint to process messages
+// API endpoint to process messages : for Facebook
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
@@ -49,6 +49,10 @@ app.post('/webhook/', function (req, res) {
 })
 
 const token = process.env.FB_PAGE_ACCESS_TOKEN
+
+const API_AI_TOKEN = process.env.API_AI_TOKEN;
+const apiAiClient = require('apiai')(API_AI_TOKEN);
+
 
 // function to echo back messages
 function sendTextMessage(sender, text) {
@@ -69,3 +73,19 @@ function sendTextMessage(sender, text) {
 	    }
     })
 }
+
+module.exports = (event) => {
+    const senderId = event.sender.id;
+    const message = event.message.text;
+
+    const apiaiSession = apiAiClient.textRequest(message, {sessionId: 'adambot'});
+
+    apiaiSession.on('response', (response) => {
+        const result = response.result.fulfillment.speech;
+
+        sendTextMessage(senderId, result);
+    });
+
+    apiaiSession.on('error', error => console.log(error));
+    apiaiSession.end();
+};
