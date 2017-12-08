@@ -89,7 +89,9 @@ module.exports = (event) => {
     apiaiSession.end();
 };
 
+
 // Welcome screen
 curl -X POST -H "Content-Type: application/json" -d {
-  "get_started": {"payload": "<postback_payload>"}
+  "get_started": {"payload": "first hand shake"}
 }' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=process.env.FB_PAGE_ACCESS_TOKEN"
+
