@@ -88,3 +88,10 @@ module.exports = (event) => {
     apiaiSession.on('error', error => console.log(error));
     apiaiSession.end();
 };
+
+// Menu démarrer
+{ 
+  "get_started":{
+    "payload":"<GET_STARTED_PAYLOAD>"
+  }
+}
